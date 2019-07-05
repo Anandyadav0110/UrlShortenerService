@@ -8,5 +8,6 @@ urlpatterns = [
     # when short URL is requested it redirects to original URL
 
     url(r'^makeshort/$', views.shorten_url, name='shortenurl'),
+    url(r'^geturl/$', views.get_url, name='geturl'),
     # this will create a URL's short id and return the short URL
 ]

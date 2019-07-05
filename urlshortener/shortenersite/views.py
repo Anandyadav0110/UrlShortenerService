@@ -25,7 +25,7 @@ def shorten_url(request):
         b.save()
  
         response_data = {}
-        response_data['url'] = settings.SITE_URL + "/" + short_id
+        response_data['url'] = short_id
 
         return HttpResponse(json.dumps(response_data), content_type="application/json")
     return HttpResponse(json.dumps({"error": "error occurs"}),
@@ -39,3 +39,22 @@ def get_short_code():
         short_id = ''.join(random.choice(char) for x in range(length))
 
         return short_id
+
+
+def get_url(request):
+    short_url = request.POST.get("shorturl", '')
+    print(short_url)
+    if not (short_url == ''):
+        try:
+            real_url = Urls.objects.get(short_id=short_url)
+        except:
+            real_url = None
+        print(real_url)
+        if real_url is not None:
+            data = json.dumps(real_url, indent=4, sort_keys=True, default=str)
+            return HttpResponse(data, content_type='application/json')
+
+        return HttpResponse(json.dumps({"error": "error occurs"}),
+                            content_type="application/json")
+    return HttpResponse(json.dumps({"error": "error occurs"}),
+                        content_type="application/json")

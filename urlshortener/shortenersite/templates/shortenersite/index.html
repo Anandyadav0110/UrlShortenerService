@@ -1,19 +1,37 @@
 {% extends "shortenersite/base.html" %}
- 
+
 {% block title %}URL Shortner - Make your URL shorter!{% endblock %}
- 
+
 {% block content %}
- 
-<div class="panel panel-default">
- <div class="panel-body">
- <div class="col-sm-9">
- <input type="text" name="url" id="url" class="form-control input-sm" placeholder="http://www.facebook.com" />
- </div>
- <div class="col-sm-3">
- {% csrf_token %}
- <button id="submitButton" class="btn btn-primary">Submit</button></p> 
- </div>
- </div>
- <div class="panel-footer"><span id="url-result">Enter the URL above and click submit!</span></div>
-</div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-sm-9">
+                <input type="text" name="url" id="url" class="form-control input-sm"
+                       placeholder="http://www.facebook.com"/>
+            </div>
+            <div class="col-sm-3">
+                {% csrf_token %}
+                <p>
+                <button id="submitButton" class="btn btn-primary">Submit</button>
+                </p>
+            </div>
+        </div>
+        <div class="panel-footer"><span id="url-result">Enter the URL above and click submit!</span></div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-sm-9">
+                <input type="text" name="shorturl" id="shorturl" class="form-control input-sm"
+                       placeholder="Enter the Short URL and click Go!">
+            </div>
+            <div class="col-sm-3">
+                {% csrf_token %}
+                <p>
+                <button id="goButton" class="btn btn-success">Go</button>
+                </p>
+            </div>
+        </div>
+
+    </div>
 {% endblock %}
