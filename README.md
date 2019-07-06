@@ -22,7 +22,7 @@ _________________________Stat Application_________________________
 
 4) Write your url in textbox and clict submit
 
-5) Copy short id and goto "http://127.0.0.1:8000/<short id>" it will redirect to your original url.
+5) Copy short id and goto "http://127.0.0.1:8000/TUKN1j" (past yor short id after / as shown in example url)  it will redirect to your original url.
 
 OR
 
