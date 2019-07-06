@@ -18,8 +18,12 @@ _________________________Stat Application_________________________
 
 2) write command python manage.py runserver
 
-3) open your browser and go to http://127.0.0.1:8000
+3) open your browser and go to "http://127.0.0.1:8000"
 
 4) Write your url in textbox and clict submit
 
-5) Copy short id and past it into second text box and click on Go button, it will redirect to ur original url.
+5) Copy short id and goto "http://127.0.0.1:8000/<short id>" it will redirect to your original url.
+
+________________________OR_________________________
+
+1) Copy short id and past it into second text box and click on Go button, it will redirect to ur original url.
