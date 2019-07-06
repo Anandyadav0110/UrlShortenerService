@@ -16,17 +16,21 @@ def redirect_original(request, short_id):
     url.count += 1
     url.save()
     return HttpResponseRedirect(url.httpurl)
- 
+
 def shorten_url(request):
     url = request.POST.get("url", '')
     if not (url == ''):
-        short_id = get_short_code()
-        b = Urls(httpurl=url, short_id=short_id)
-        b.save()
- 
-        response_data = {}
-        response_data['url'] = short_id
+        url_obj = Urls.objects.get(httpurl=url)
+        if url_obj is None:
+            short_id = get_short_code()
+            b = Urls(httpurl=url, short_id=short_id)
+            b.save()
 
+            response_data = {}
+            response_data['url'] = short_id
+        else:
+            response_data = {}
+            response_data['url'] = url_obj.short_id
         return HttpResponse(json.dumps(response_data), content_type="application/json")
     return HttpResponse(json.dumps({"error": "error occurs"}),
              content_type="application/json")
