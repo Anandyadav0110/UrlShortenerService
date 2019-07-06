@@ -20,7 +20,10 @@ def redirect_original(request, short_id):
 def shorten_url(request):
     url = request.POST.get("url", '')
     if not (url == ''):
-        url_obj = Urls.objects.get(httpurl=url)
+        try:
+            url_obj = Urls.objects.get(httpurl=url)
+        except:
+            url_obj = None
         if url_obj is None:
             short_id = get_short_code()
             b = Urls(httpurl=url, short_id=short_id)
